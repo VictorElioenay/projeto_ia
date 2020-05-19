@@ -6,6 +6,8 @@ linhateste = testeLinha.split(" ")
 print("Valor esperado: " + linhateste[0])
 vetordeteste = list(map(float,linhateste[1:])) 
 
-ResultadoObtido = KNN('aqr.txt', 'teste.txt').runKNN_DTW(5)
+# ResultadoObtido = KNN('aqr.txt', 'teste.txt').runKNN_DTW()
+# print(ResultadoObtido)
 
-print(ResultadoObtido)
+ResultadoObtido2 = KNN('aqr.txt', 'teste.txt').runKNN_Euclidiana()
+print(ResultadoObtido2)

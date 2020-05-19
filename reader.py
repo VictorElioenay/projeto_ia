@@ -16,14 +16,16 @@ class Reader:
     vetorResultado = []
 
     # Faz a leitura da base de dados e vai comparando
+    # count=0
     for linha in self.arquivo:
+      # count += 1
       vetorResultado = [0,0,0]
       valoresLinha = linha.split(" ")
       vetorResultado[0] = valoresLinha[0]
       vetorLinha = list(map(float,valoresLinha[1:])) 
       vetorResultado[1] = DTW(vetorLinha,self.vetordeteste).peso()
       matrizDistancia.append(vetorResultado)
-
+    # print(count)
     return matrizDistancia
 
   def RunEuclidiana(self):

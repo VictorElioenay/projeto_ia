@@ -1,4 +1,3 @@
-
 class DTW():
     
     def __init__(self,x,y):

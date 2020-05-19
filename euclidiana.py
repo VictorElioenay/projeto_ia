@@ -10,7 +10,7 @@ class Euclidiana:
     if(self.x.__len__() > self.y.__len__()):
       for i in range(self.x.__len__()):
           try:
-            dist += sqrt(self.x[i]**2 + self.y[i]**2)
+            dist += sqrt(self.x[i]**2 - self.y[i]**2)
           except:
             dist += sqrt(self.x[i]**2)
 
@@ -18,7 +18,7 @@ class Euclidiana:
     else:
       for i in range(self.y.__len__()):
         try:
-          dist += sqrt(self.x[i]**2 + self.y[i]**2)
+          dist += sqrt(self.x[i]**2 - self.y[i]**2)
         except:
           dist += sqrt(self.y[i]**2)
 

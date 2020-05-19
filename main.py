@@ -21,7 +21,6 @@ for n in range(5):
 
     ResultadoDTW = KNN(arquivoTreino, vetordeteste, k).runKNN_DTW()
     # print(ResultadoDTW)
-
     ResultadoEuclidiana = KNN(arquivoTreino, vetordeteste, k).runKNN_Euclidiana()
     # print(ResultadoEuclidiana)
 
@@ -39,7 +38,7 @@ for n in range(5):
 
     accuracyEuclidiana += hitEuclidiana/ResultadoEuclidiana.__len__()
     print("Progresso: " + str(count*100/240) + "% teste " + str(n+1))
-    # print(" Accuracy DTW: " + str(accuracyDTW*100/count) + "%")
+    # print("Accuracy DTW: " + str(accuracyDTW*100/count) + "%")
     # print("Accuracy Euclidiana: " + str(accuracyEuclidiana*100/count) + "%")
-  # print("Accuracy DTW: " + str(accuracyDTW*100/count) + "%")
-  # print("Accuracy Euclidiana: " + str(accuracyEuclidiana*100/count) + "%")
+  print("Accuracy DTW: " + str(accuracyDTW*100/count) + "%")
+  print("Accuracy Euclidiana: " + str(accuracyEuclidiana*100/count) + "%")

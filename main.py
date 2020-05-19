@@ -1,13 +1,15 @@
 from knn import KNN
 
 teste = open('teste.txt', 'r')
-testeLinha = teste.readline()
-linhateste = testeLinha.split(" ")
-print("Valor esperado: " + linhateste[0])
-vetordeteste = list(map(float,linhateste[1:])) 
+arquivoTreino = 'aqr.txt'
 
-# ResultadoObtido = KNN('aqr.txt', 'teste.txt').runKNN_DTW()
-# print(ResultadoObtido)
+# testeLinha = teste.readline()
+for testeLinha in teste:
+  linhateste = testeLinha.split(" ")
+  print("Valor esperado: " + linhateste[0])
+  vetordeteste = list(map(float,linhateste[1:])) 
+  ResultadoObtido = KNN(arquivoTreino, vetordeteste).runKNN_DTW()
+  print(ResultadoObtido)
 
-ResultadoObtido2 = KNN('aqr.txt', 'teste.txt').runKNN_Euclidiana()
-print(ResultadoObtido2)
+  ResultadoObtido2 = KNN(arquivoTreino, vetordeteste).runKNN_Euclidiana()
+  print(ResultadoObtido2)

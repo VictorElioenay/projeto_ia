@@ -1,13 +1,13 @@
 from collections import Counter
-from reader_dtw import Reader
+from reader import Reader
 
 class KNN:
-  def __init__(self, nomeCjTreino, nomeCjTeste):
+  def __init__(self, nomeCjTreino, vetordeteste):
     self.nomeCjTreino = nomeCjTreino
-    self.nomeCjTeste = nomeCjTeste
+    self.vetordeteste = vetordeteste
 
   def runKNN_DTW(self):
-    reader = Reader(self.nomeCjTreino, self.nomeCjTeste)
+    reader = Reader(self.nomeCjTreino, self.vetordeteste)
 
     #Gasta muito processameto então o ideal é aproveitar os dados
     matrizDTW = reader.RunDTW()  
@@ -32,7 +32,7 @@ class KNN:
     return resultado
 
   def runKNN_Euclidiana(self):
-    reader = Reader(self.nomeCjTreino, self.nomeCjTeste)
+    reader = Reader(self.nomeCjTreino, self.vetordeteste)
 
     matrizEuclidiana = reader.RunEuclidiana()  
 

@@ -1,44 +1,84 @@
 from knn import KNN
+from threading import Thread
 
-# teste = open('teste.txt', 'r')
-# arquivoTreino = 'aqr.txt'
-# k = [1,3,5,10]
-
-for n in range(5):
+def main(n):
   print('Teste: ' + str(n))
   teste = open('./particoes/ts' + str(n) + '.txt', 'r')
   arquivoTreino = './particoes/cj' + str(n) + '.txt'
   k = [1,3,5,10]
-  # testeLinha = teste.readline()
+ 
   count = 0
-  accuracyDTW = 0
-  accuracyEuclidiana = 0
+  hitDTW = [0,0,0,0]
+  hitEuclidiana = [0,0,0,0]
   for testeLinha in teste:
-    count += 1
+    count += 1 #Conta quantas linhas ja foram executadas
     linhateste = testeLinha.split(" ")
-    # print("Valor esperado: " + linhateste[0])
     vetordeteste = list(map(float,linhateste[1:])) 
 
     ResultadoDTW = KNN(arquivoTreino, vetordeteste, k).runKNN_DTW()
-    # print(ResultadoDTW)
     ResultadoEuclidiana = KNN(arquivoTreino, vetordeteste, k).runKNN_Euclidiana()
-    # print(ResultadoEuclidiana)
 
-    hitDTW = 0 
+  #Contador de acertos:
+    pos = 0
     for i in ResultadoDTW:
       if(int(linhateste[0]) == int(i[1])):
-        hitDTW += 1
+        hitDTW[pos] += 1
+      pos += 1
 
-    accuracyDTW += hitDTW/ResultadoDTW.__len__()
-
-    hitEuclidiana = 0 
+    pos = 0
     for i in ResultadoEuclidiana:
       if(int(linhateste[0]) == int(i[1])):
-        hitEuclidiana  += 1
+        hitEuclidiana[pos] += 1
+      pos += 1
 
-    accuracyEuclidiana += hitEuclidiana/ResultadoEuclidiana.__len__()
-    print("Progresso: " + str(count*100/240) + "% teste " + str(n+1))
-    # print("Accuracy DTW: " + str(accuracyDTW*100/count) + "%")
-    # print("Accuracy Euclidiana: " + str(accuracyEuclidiana*100/count) + "%")
-  print("Accuracy DTW: " + str(accuracyDTW*100/count) + "%")
-  print("Accuracy Euclidiana: " + str(accuracyEuclidiana*100/count) + "%")
+    print("Progresso" + str(n) + ": " + str(count*100/240) + "%")
+  
+  #Relatorio dos testes:
+  relatorio = open("relatorio.txt", "w")
+  relatorio.write('Teste: ' + str(n) + "\n")
+  relatorio.write("Accuracy DTW K=1: " + str(hitDTW[0]*100/count) + "% \n")
+  relatorio.write("Accuracy DTW K=3: " + str(hitDTW[1]*100/count) + "% \n")
+  relatorio.write("Accuracy DTW K=5: " + str(hitDTW[2]*100/count) + "% \n")
+  relatorio.write("Accuracy DTW K=10: " + str(hitDTW[3]*100/count) + "% \n")
+  relatorio.write("Accuracy DTW TOTAL: " + str((hitDTW[0] + hitDTW[1] + hitDTW[2] + hitDTW[3])*100/4) + "% \n")
+  relatorio.write("Accuracy Euclidiana K=1: " + str(hitEuclidiana[0]*100/count) + "% \n")
+  relatorio.write("Accuracy Euclidiana K=3: " + str(hitEuclidiana[1]*100/count) + "% \n")
+  relatorio.write("Accuracy Euclidiana K=5: " + str(hitEuclidiana[2]*100/count) + "% \n")
+  relatorio.write("Accuracy Euclidiana K=10: " + str(hitEuclidiana[3]*100/count) + "% \n")
+  relatorio.write("Accuracy Euclidiana TOTAL: " + str(((hitEuclidiana[0] + hitEuclidiana[1] + hitEuclidiana[2] + hitEuclidiana[3])*100)/(4*count)) + "% \n\n\n")
+
+  # print("Accuracy DTW K=1: " + str(hitDTW[0]*100/count) + "%")
+  # print("Accuracy DTW K=3: " + str(hitDTW[1]*100/count) + "%")
+  # print("Accuracy DTW K=5: " + str(hitDTW[2]*100/count) + "%")
+  # print("Accuracy DTW K=10: " + str(hitDTW[3]*100/count) + "%")
+  # print("Accuracy DTW TOTAL: " + str((hitDTW[0] + hitDTW[1] + hitDTW[2] + hitDTW[3])*100/4) + "%")
+  # print("Accuracy Euclidiana K=1: " + str(hitEuclidiana[0]*100/count) + "%")
+  # print("Accuracy Euclidiana K=3: " + str(hitEuclidiana[1]*100/count) + "%")
+  # print("Accuracy Euclidiana K=5: " + str(hitEuclidiana[2]*100/count) + "%")
+  # print("Accuracy Euclidiana K=10: " + str(hitEuclidiana[3]*100/count) + "%")
+  # print("Accuracy Euclidiana TOTAL: " + str(((hitEuclidiana[0] + hitEuclidiana[1] + hitEuclidiana[2] + hitEuclidiana[3])*100)/(4*count)) + "%")
+
+
+# for n in range(5):
+#   main(n)
+
+
+class Th(Thread):
+
+  def __init__ (self, num):
+    Thread.__init__(self)
+    self.num = num
+
+  def run(self):
+    main(self.num)
+
+a = Th(0)
+a.start() 
+a = Th(1)
+a.start() 
+a = Th(2)
+a.start() 
+a = Th(3)
+a.start() 
+a = Th(4)
+a.start() 

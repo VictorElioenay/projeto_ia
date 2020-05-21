@@ -1,0 +1,11 @@
+Teste: 0
+Accuracy DTW K=1: 82.08333333333333% 
+Accuracy DTW K=3: 82.08333333333333% 
+Accuracy DTW K=5: 83.33333333333333% 
+Accuracy DTW K=10: 80.83333333333333% 
+Accuracy DTW TOTAL: 82.08333333333333% 
+Accuracy Euclidiana K=1: 13.333333333333334% 
+Accuracy Euclidiana K=3: 13.333333333333334% 
+Accuracy Euclidiana K=5: 39.166666666666664% 
+Accuracy Euclidiana K=10: 50.833333333333336% 
+Accuracy Euclidiana TOTAL: 29.166666666666668% 

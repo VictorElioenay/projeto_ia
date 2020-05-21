@@ -34,7 +34,7 @@ def main(n):
     print("Progresso" + str(n) + ": " + str(count*100/240) + "%")
   
   #Relatorio dos testes:
-  relatorio = open("./relatorios/relatorio"+ str(n) + ".txt", "w")
+  relatorio = open("./relatorios/relatorioFinal"+ str(n) + ".txt", "w")
   relatorio.write('Teste: ' + str(n) + "\n")
   relatorio.write("Accuracy DTW K=1: " + str(hitDTW[0]*100/count) + "% \n")
   relatorio.write("Accuracy DTW K=3: " + str(hitDTW[1]*100/count) + "% \n")
@@ -46,21 +46,6 @@ def main(n):
   relatorio.write("Accuracy Euclidiana K=5: " + str(hitEuclidiana[2]*100/count) + "% \n")
   relatorio.write("Accuracy Euclidiana K=10: " + str(hitEuclidiana[3]*100/count) + "% \n")
   relatorio.write("Accuracy Euclidiana TOTAL: " + str(((hitEuclidiana[0] + hitEuclidiana[1] + hitEuclidiana[2] + hitEuclidiana[3])*100)/(4*count)) + "% \n")
-
-  # print("Accuracy DTW K=1: " + str(hitDTW[0]*100/count) + "%")
-  # print("Accuracy DTW K=3: " + str(hitDTW[1]*100/count) + "%")
-  # print("Accuracy DTW K=5: " + str(hitDTW[2]*100/count) + "%")
-  # print("Accuracy DTW K=10: " + str(hitDTW[3]*100/count) + "%")
-  # print("Accuracy DTW TOTAL: " + str((hitDTW[0] + hitDTW[1] + hitDTW[2] + hitDTW[3])*100/4) + "%")
-  # print("Accuracy Euclidiana K=1: " + str(hitEuclidiana[0]*100/count) + "%")
-  # print("Accuracy Euclidiana K=3: " + str(hitEuclidiana[1]*100/count) + "%")
-  # print("Accuracy Euclidiana K=5: " + str(hitEuclidiana[2]*100/count) + "%")
-  # print("Accuracy Euclidiana K=10: " + str(hitEuclidiana[3]*100/count) + "%")
-  # print("Accuracy Euclidiana TOTAL: " + str(((hitEuclidiana[0] + hitEuclidiana[1] + hitEuclidiana[2] + hitEuclidiana[3])*100)/(4*count)) + "%")
-
-
-# for n in range(5):
-#   main(n)
 
 
 class Th(Thread):

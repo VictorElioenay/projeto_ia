@@ -49,6 +49,8 @@ class DTW():
             peso += self.__matriz[i[0]][i[1]]
         return peso
 
+    
+
     def caminho(self):
         return self.__caminho
 

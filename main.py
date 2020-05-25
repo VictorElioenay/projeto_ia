@@ -31,7 +31,7 @@ def main(n):
         hitEuclidiana[pos] += 1
       pos += 1
 
-    print("Progresso" + str(n) + ": " + str(count*100/240) + "%")
+    print("Progresso" + str(n) + ": " + str(count*100/240) + "%") #Indicador de progresso do programa
   
   #Relatorio dos testes:
   relatorio = open("./relatorios/relatorioFinal"+ str(n) + ".txt", "w")
@@ -48,6 +48,7 @@ def main(n):
   relatorio.write("Accuracy Euclidiana TOTAL: " + str(((hitEuclidiana[0] + hitEuclidiana[1] + hitEuclidiana[2] + hitEuclidiana[3])*100)/(4*count)) + "% \n")
 
 
+#Threads para paralelizar o processamento
 class Th(Thread):
 
   def __init__ (self, num):

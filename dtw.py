@@ -53,9 +53,3 @@ class DTW():
 
     def caminho(self):
         return self.__caminho
-
-# i = len(x)-1
-# j = len(y)-1
-# caminho.append((i,j))
-# busca(i,j)
-# print(caminho)

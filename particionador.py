@@ -1,3 +1,4 @@
+#Criador de arquivos para validação cruzada
 for n in range(5):
   entrada = open('aqr.txt', 'r')
   count = 0

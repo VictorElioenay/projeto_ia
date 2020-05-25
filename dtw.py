@@ -28,6 +28,7 @@ class DTW():
             return [0]
         return vetor
 
+    # Busca o menor caminho possível
     def __busca(self,i,j):
         value = min(self.__square(i,j))
         if(i-1 >= 0 and j-1 >= 0):
@@ -43,6 +44,7 @@ class DTW():
                 self.__caminho.append((i,j-1))
                 return self.__busca(i,j-1)
 
+    # Retorna o peso (a distancia total entre os vetores)
     def peso(self):
         peso = 0
         for i in self.__caminho:
